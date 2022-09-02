@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int ans=0;
+    void preor(TreeNode*root,int mini){
+        if(!root)return;
+        if(root->val>=mini){
+            mini=root->val;
+            ans++;
+        }
+        preor(root->left,mini);
+        preor(root->right,mini);
+    }
+    
+    int goodNodes(TreeNode* root) {
+        
+        preor(root,INT_MIN);
+        
+        return ans;
+    }
+};
